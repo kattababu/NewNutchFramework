@@ -1,0 +1,289 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+# The default url filter.
+# Better for whole-internet crawling.
+
+# Each non-comment, non-blank line contains a regular expression
+# prefixed by '+' or '-'.  The first matching pattern in the file
+# determines whether a URL is included or ignored.  If no pattern
+# matches, the URL is ignored.
+
+# skip file: ftp: and mailto: urls
+-^(ftp|mailto):
+
+# skip image and other suffixes we can't yet parse
+# for a more extensive coverage use the urlfilter-suffix plugin
+-\.(gif|GIF|jpg|JPG|png|PNG|ico|ICO|css|CSS|sit|SIT|eps|EPS|wmf|WMF|zip|ZIP|ppt|PPT|mpg|MPG|xls|XLS|gz|GZ|rpm|RPM|tgz|TGZ|mov|MOV|exe|EXE|jpeg|JPEG|bmp|BMP|js|JS)$
+
+# skip URLs containing certain characters as probable queries, etc.
+#-[?*!@=]
+
+# skip URLs with slash-delimited segment that repeats 3+ times, to break loops
+#-.*(/[^/]+)/[^/]+\1/[^/]+\1/
+
+# skip URLs containing certain Strings as probable queries, etc.
+-\=(tpnews#comments|print|large&test=1|small&test=2|sliderNews|RelatedNews|rss|element1|element2|slideshow)$
+
+
+
+
+#-^(.(?!=tpnews))*$
+
+# SpicyOnion Websites Elimination
+
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/news/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/sandalwood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/tollywood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/punjwood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/song/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/coastalwood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/bollywood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/mollywood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/hollywood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/bengalitollywood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/marywood/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/alpha/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/singer/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/awards/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/lists/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/movie/year/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/producer/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/lyricist/
+
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/spicyonion-175x250.com
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/tmdbmedia/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/2016-drama--movies/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/2016-action--movies/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/2016-romance--movies/
+
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/kollywood/
+
+
+
+# CANAL WEBSITE ELIMINATION
+
+
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/noticias
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/accion-10/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/espectaculos/
+
+
+
+# SpicyOnion Website Elimination Ends
+
+
+
+# KINEPOLIS CINNEMA WEBSITE
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/monavis
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/anniversaire-enfant
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/movie-categories
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/kinecards
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/sites/
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/%23
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/%C3%A0-d%C3%A9couvrir
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/coup-de-coeur
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/famille
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/conditions-dutilisation
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/danse
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/mon-kinepolis-infos
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/rogueone
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/votre-profil-Mon-Kinepolis
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/goto-checkout-gate/
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/sites/kinepolis.fr/files/
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/lespace-cosy
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/ma-kinecard
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/faq/
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/anniversaire
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/cineday.orange.fr/
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/?select
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/inscrivez-vous
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/les-films-que-j-ai-vus
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/mes-tickets
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/mon-top-5
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/films-que-je-souhaite-voir
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/marcia-gay-harden
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/sitemap
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/FAQ
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/faq
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/user
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/user/
+#-^https://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/newsletter-opera
+
+
+#ELEMINATION OF TELEAMAZONS WEBSITE
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/2015/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/2016/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/2017/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/categoria/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/deportes/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/hora25ec/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/images/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/wp-content/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/wp-includes/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/rss-tam/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/farandula/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/opcion2017/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/actualidad/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/contactenos/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/salud-en-linea/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/teleamazonas-en-vivo/
+#-^http://www.teleamazonas.com/programacion/entretenimiento/en-corto/
+#-^http://www.teleamazonas.com/programacion/entretenimiento/jarabe-de-pico/
+#-^http://www.teleamazonas.com/hora25ec/
+
+
+
+# accept anything else
+ +.
+
+#+^http://spicyonion.com/
+#+.*NutchCrawl/Nutch/runtime/local/spicy.*
+
+
+
+
+# KINEPOLIS
+#+^https://kinepolis.fr/
+
+# TELEAMAZONS WEBSITE
+
+#+^http://www.teleamazonas.com/
+
+
+
+
+# RAJESHSETTY BLOGS
++^http://rajeshsetty.com/
+
+# ONSTARTUPS BLOGS
++^http://onstartups.com/
+
+# DEESHAA BLOGS
++^https://deeshaa.org/
+
+# CELESTRI BLOGS
++^https://celestri.org/
+
+
+# ATULCHITNIS BLOGS
++^http://atulchitnis.net/
+
+
+# THE STARTUP BLOGS
++^http://thestartupblog.in/
+
+
+# BLOG LET ME KNOW BLOGS
++^http://blog.letmeknow.in/
+
+
+# SMALLBUSINESS INDIA BLOGS
++^http://smallbusinessindia.intuit.in/
+
+
+# YOURSTORY BLOGS
++^https://yourstory.com/
+
+# GAURAVONOMICS BLOGS
++^https://gauravonomics.com/
+
+
+# PLUGGED BLOGS
++^http://www.plugged.in/
+
+# TECHCIRCLE BLOGS
++^http://techcircle.vccircle.com/
+
+# NENONLINE BLOGS
++^http://www.nenonline.org/page/contact-us
+
+# SILICONINDIA BLOGS
++^http://www.siliconindia.com/
+
+# MAHESHCR BLOGS 
++^http://maheshcr.com
+
+# TRAK BLOGS
++^http://trak.in
+
+# VCCIRCLE BLOGS
++^https://www.vccircle.com/
+
+# TECHALOO BLOGS
++^http://techaloo.com/
+
+# THEMARKETERS BLOGS
++^http://www.themarketers.in/
+
+# STARTUPDUNIA BLOGS
++^http://www.startupdunia.com/
+
+# VENTUREWOODS BLOGS
++^http://www.venturewoods.org/
+
+# PATHIKSHAH BLOGS
++^http://www.pathikshah.com/blog/best-startup-blogs/
+
+# INDIANWEB2 BLOGS
++^https://www.indianweb2.com/
+
+# PARASCHOPRA BLOGS
++^http://paraschopra.com/blog/
+
+# NENONLINE BLOGS
++^http://www.nenonline.org/
+
+# EMERGIC BLOGS
++^http://emergic.org/
+
+
+# FilmiGeek Websites
+
+
+#+^http://www.filmigeek.com/
+#+^http://www.filmigeek.net/
+#+^http://geekofalltrades.typepad.com/filmi_geek/
+
+# MijnSerie.nl Websites
+#+^https://www.mijnserie.nl/
+
+# ACtion PACk POST Login
+#+^http://actionpack.hbolag.com/
+
+
+# CANAL WEBSITE
+#+^http://www.canal10.com.ni/
+
+
+#+^https://www.youtube.com/
+#+^https://www.gmail.com/
+#+^http://www.headrun.com/
+#+^http://www.thehindu.com/
+#+^http://([a-z0-9]*\.)* www.thehindu.com/news/[national|cities]/
+#+^http://([a-z0-9]*\.)*\S* 
+#+^http://([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?
+#+^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/news/
+
+#-^http://www.thehindu.com/news/national\.*
+
+#+^http://www.thehindu.com/news/national/andhra-pradesh/
+#-^http://[a-zA-Z0-9-.]+.[a-zA-Z]{2,3}(/\S*)?/news/cities/Hyderabad\.*
+#-^http://www.thehindu.com/news/cities/Visakhapatnam\.*
+#-^http://www.thehindu.com/news/cities/Vijayawada\.*
+#-^http://www.thehindu.com/news/cities/telangana\.*
+#+^https://([a-z0-9]*\.)* www.youtube.com/
+#+^https://www.youtube.com/watch?v=p7X7mwcEJ-w

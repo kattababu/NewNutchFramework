@@ -1,0 +1,502 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+        <name>http.agent.name</name>
+        <value>My Spider</value>
+    </property>
+    <property>
+        <name>storage.data.store.class</name>
+        <value>org.apache.gora.hbase.store.HBaseStore</value>
+        <description>Default class for storing data</description>
+    </property>
+
+<property>
+  <name>db.ignore.external.links</name>
+  <value>false</value>
+  <description>If true, outlinks leading from a page to external hosts
+  will be ignored. This is an effective way to limit the crawl to include
+  only initially injected hosts, without creating complex URLFilters.
+  </description>
+</property>
+
+
+<property>
+  <name>http.redirect.max</name>
+  <value>10</value>
+  <description>The maximum number of redirects the fetcher will follow when
+  trying to fetch a page. If set to negative or 0, fetcher won't immediately
+  follow redirected URLs, instead it will record them for later fetching.
+  </description>
+</property>
+
+<property>
+  <name>db.ignore.internal.links</name>
+  <value>false</value>
+  <description>If true, when adding new links to a page, links from
+  the same host are ignored.  This is an effective way to limit the
+  size of the link database, keeping only the highest quality
+  links.
+  </description>
+</property>
+
+<property>
+  <name>db.update.additions.allowed</name>
+  <value>true</value>
+  <description>If true, updatedb will add newly discovered URLs, if false
+  only already existing URLs in the CrawlDb will be updated and no new
+  URLs will be added.
+  </description>
+</property>
+
+<property>
+  <name>file.crawl.redirect_noncanonical</name>
+  <value>false</value>
+  <description>
+    If true, protocol-file treats non-canonical file names as
+    redirects and does not canonicalize file names internally. A file
+    name containing symbolic links as path elements is then not
+    resolved and &quot;fetched&quot; but recorded as redirect with the
+    canonical name (all links on path are resolved) as redirect
+    target.
+  </description>
+</property>
+
+<!-- Post Data Authentication-->
+
+<property>
+  <name>http.auth.file</name>
+  <value>httpclient-auth.xml</value>
+  <description>Authentication configuration file for
+  'protocol-httpclient' plugin.
+  </description>
+</property>
+
+<property>
+  <name>plugin.folders</name>
+  <value>/NutchCrawl/Nutch/runtime/local/plugins</value>
+  <description>Directories where nutch plugins are located.  Each
+  element may be a relative or absolute path.  If absolute, it is used
+  as is.  If relative, it is searched for on the classpath.</description>
+</property>
+
+
+
+
+
+
+<property>
+  <name>http.auth.csv.cookienames</name>
+  <value>_SessionId,JSessionID,PHPSESSID</value>
+ </property>
+ <property>
+  <name>http.auth.cookie.policy</name>
+  <value>Mozilla</value>
+ </property>
+
+
+<property>
+  <name>http.auth.csv.urls</name>
+
+<value>https://www.mijnserie.nl/serie_overzicht/</value>
+<!--
+  <value>http://foobar.com/SSO/login.jsp?logintype=normal,http://foobar.com/login.jsp?logintype=normal</value>
+-->
+ </property>
+
+<!-- Post Data Authentication Ended -->
+
+
+
+
+
+
+<!-- Newly added Property-->
+
+
+
+<!--
+
+<property>
+<name>http.cookie.login.page</name>
+<value></value>
+<description>URL of the login page to derive the cookies from. Cookies
+will be stored upon initialization and re-initialized upon expiration.
+Any URL request attributes will be sent to POSTed to the page.
+NOTE: This currently only works for protocol-httpclient.</description>
+</property>
+
+-->
+
+<!-- Newly added Property ended-->
+
+<!-- Newly Added Property-->
+
+
+<property>
+ <name>parser.html.outlinks.ignore_nofollow</name>
+  <value>true</value>
+  <description>Boolean value instructing the parser to ignore nofollow
+  directives on pages and includes them in outlinks. Defaults to false, 
+  which honors the nofollow and does not include them in outlinks</description>
+</property>
+
+
+<!-- Newly Added Property Ended -->
+<!--
+
+<property>
+    <name>parser.html.selector.blacklist</name>
+    <value>div.headlines,div.dropcities</value>
+    <description>
+        A comma-delimited list of css like tags to identify the elements which should
+        NOT be parsed. Use this to tell the HTML parser to ignore the given elements, e.g. site navigation.
+        It is allowed to only specify the element type (required), and optional its class name ('.')
+        or ID ('#'). More complex expressions will not be parsed.
+        Valid examples: div.header,span,p#test,div#main,ul,div.footercol
+        Invalid expressions: div#head#part1,#footer,.inner#post
+        Note that the elements and their children will be silently ignored by the parser,
+        so verify the indexed content with Luke to confirm results.
+        Use either 'parser.html.selector.blacklist' or 'parser.html.selector.whitelist', but not both of them at once. If so,
+        only the whitelist is used.
+    </description>
+</property>
+
+
+
+
+<property>
+    <name>parser.html.selector.protected_urls</name>
+    <value>http://www.thehindu.com/news/national/andhra-pradesh/</value>
+    <description>Comma separated list of URLs for pages that should be 
+excluded from element filtering</description>
+</property>
+<property>
+    <name>parser.html.selector.storage_field</name>
+    <value>/hbase/ll.txt</value>
+    <description>The name of the document field where the filtered content 
+should be stored</description>
+</property>
+-->
+
+<!--
+
+<property>
+  <name>parser.html.NodesToExclude</name>
+  <value>div;class;smltitle1|div;class;headlines|div;class;smltitle|div;class;tab1 tab|div;id;most-tab|div;id;th_footer|div;id;header|div;class;dropcities|div;class;hover-img|div;class;art-box|div;class;menSecHold|div;class;menSecHoldLink|div;class;firstlist|div;class;art-holder|div;class;sec-news|div;class;art-holder sec-news|ul;id;nav-bar|ul;id;wideDropMenuAll|ul;id;wideDropMenu|div;id;subnav-bar|div;class;articlespace|div;class;tab2 tab|div;id;most-tab-header|div;class;most-tab|a;href;http://www.thehindu.com/news/cities/Visakhapatnam/|a;href;http://www.thehindu.com/news/cities/Hyderabad/|a;href;http://www.thehindu.com/news/cities/Vijayawada/</value>
+  <description>
+  A list of nodes whose content will not be indexed separated by "|".  Use this to tell
+  the HTML parser to ignore, for example, site navigation text.
+  Each node has three elements: the first one is the tag name, the second one the
+  attribute name, the third one the value of the attribute.
+  Note that nodes with these attributes, and their children, will be silently ignored by the parser
+  so verify the indexed content with Luke to confirm results.
+  </description>
+</property>
+-->
+
+
+
+<property>
+  <name>generate.max.count</name>
+  <value>-1</value>
+  <description>The maximum number of urls in a single
+  fetchlist.  -1 if unlimited. The urls are counted according
+  to the value of the parameter generator.count.mode.
+  </description>
+</property>
+
+
+
+
+
+
+
+<property>
+  <name>fetcher.threads.fetch</name>
+  <value>100</value>
+  <description>The number of FetcherThreads the fetcher should use.
+  This is also determines the maximum number of requests that are
+  made at once (each FetcherThread handles one connection). The total
+  number of threads running in distributed mode will be the number of
+  fetcher threads * number of nodes as fetcher has one map task per node.
+  </description>
+</property>
+
+
+<property>
+  <name>fetcher.threads.per.queue</name>
+  <value>20</value>
+  <description>This number is the maximum number of threads that
+    should be allowed to access a queue at one time. Setting it to 
+    a value > 1 will cause the Crawl-Delay value from robots.txt to
+    be ignored and the value of fetcher.server.min.delay to be used
+    as a delay between successive requests to the same server instead 
+    of fetcher.server.delay.
+   </description>
+</property>
+
+
+
+
+
+
+<property>
+  <name>parser.html.NodesToInclude</name>
+ <value></value>
+<description>
+  A list of nodes whose content will not be indexed separated by "|".  Use this to tell
+  the HTML parser to Add, for example, site navigation text.
+  Each node has three elements: the first one is the tag name, the second one the
+  attribute name, the third one the value of the attribute.
+  Note that nodes with these attributes, and their children, will be silently Add by the parser
+  so verify the indexed content with Luke to confirm results.
+  </description>
+</property>
+
+
+
+<!-- Exclude For SpicyOnion Sites -->
+
+
+<property>
+  <name>parser.html.NodesToExclude</name>
+ <value>div;class;col-xs-12 col-sm-12 col-md-8 col-lg-7|link;rel;canonical|link;rel;alternate|a;class;btn btn-primary|div;class;collapse|div;class;col-xs-4 col-sm-4 col-md-4 col-lg-4|div;class;col-xs-3 col-sm-3 col-md-3 col-lg-3|div;class;col-xs-8 col-sm-8 col-md-8 col-lg-8|a;class;blogs|div;class;col-xs-6 col-sm-6 col-md-4 col-lg-4|div;class;cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left|div;class;col-xs-10 col-sm-10 col-md-4 col-lg-4|div;class;row1|div;class;col-xs-8 col-sm-4 col-md-3 col-lg-5|div;class;col-xs-2 col-sm-2 col-md-3 col-lg-3|div;class;col-xs-2 col-sm-3 col-md-3 col-lg-2|div;class;col-xs-12 col-sm-4 col-md-4 col-lg-4|div;class;pull-left|a;title;Movies Released in 2016|a;title;Movies Released in 2017|div;class;col-xs-6 col-sm-6 col-md-3 col-lg-3|div;class;col-xs-6 col-sm-6 col-md-2 col-lg-2|font;itempop;datePublished|div;class;padtop5|div;class;col-xs-10 col-sm-10 col-md-10 col-lg-10|div;class;hidden-xs hidden-sm col-md-4 col-lg-4|div;class;col-sm-offset-4 col-md-8|a;href;http://spicyonion.com/tollywood/|a;href;http://spicyonion.com/punjwood/|a;href;http://spicyonion.com/sandalwood/|a;href;http://spicyonion.com/song/|div;class;col-xs-12 col-sm-6 col-md-3 col-lg-3|div;class;rightsidebar col-xs-12 col-sm-12 col-md-4 col-lg-4|div;class;column size-1of4|div;class;col-xs-8 col-sm-4 col-md-3 col-lg-5|div;class;col-xs-2 col-sm-2 col-md-3 col-lg-3|div;class;col-xs-2 col-sm-3 col-md-3 col-lg-2|div;class;col-xs-6 col-sm-6 col-md-4 col-lg-4|div;class;col-xs-6 col-sm-6 col-md-8 col-lg-8|div;class;col-xs-12 col-sm-6 col-md-6 col-lg-6|div;style;font-weight: bold; margin-bottom: 5px;|div;id;listreponse|div;class;col-xs-8 col-sm-8 col-md-8 col-lg-8|div;class;col-xs-4 col-sm-4 col-md-2 col-lg-2 padtop5|div;class;col-xs-12 col-sm-12 col-md-6 col-lg-6 list0|span;style;font-weight: bold;|div;class;col-xs-12 col-sm-12 col-md-6 col-lg-6 list1|div;class;col-xs-8 col-sm-8 col-md-5 col-lg-5</value>
+  <description>
+  A list of nodes whose content will not be indexed separated by "|".  Use this to tell
+  the HTML parser to ignore, for example, site navigation text.
+  Each node has three elements: the first one is the tag name, the second one the
+  attribute name, the third one the value of the attribute.
+  Note that nodes with these attributes, and their children, will be silently ignored by the parser
+  so verify the indexed content with Luke to confirm results.
+  </description>
+</property>
+<!-- Exclude For SpicyOnion Sites End -->
+
+<!-- Exclude For FilmiGeek Sites-->
+
+<property>
+  <name>parser.html.NodesToExclude</name>
+ <value>div;class;module-categories module|div;class;module-recent-comments module|div;class;module-facebook-like module|div;class;module-custom_html module|div;class;module-archives module|div;id;footer-inner|div;class;module-typelist module|div;class;module-search module|link;rel;alternate|link;rel;stylesheet|link;rel;start|div;id;banner-inner|div;id;nav-inner|a;href;http://www.filmigeek.net/|a;href;http://www.filmigeek.com/index-by-title.html</value>
+  <description>
+  A list of nodes whose content will not be indexed separated by "|".  Use this to tell
+  the HTML parser to ignore, for example, site navigation text.
+  Each node has three elements: the first one is the tag name, the second one the
+  attribute name, the third one the value of the attribute.
+  Note that nodes with these attributes, and their children, will be silently ignored by the parser
+  so verify the indexed content with Luke to confirm results.
+  </description>
+</property>
+
+<!-- Exclude For FilmiGeek Sites End -->
+
+<!-- Exclude For CanalIN Site -->
+
+<property>
+  <name>parser.html.NodesToExclude</name>
+ <value>footer;id;footer</value>
+  <description>
+  A list of nodes whose content will not be indexed separated by "|".  Use this to tell
+  the HTML parser to ignore, for example, site navigation text.
+  Each node has three elements: the first one is the tag name, the second one the
+  attribute name, the third one the value of the attribute.
+  Note that nodes with these attributes, and their children, will be silently ignored by the parser
+  so verify the indexed content with Luke to confirm results.
+  </description>
+</property>
+
+<!--Exclude For CanaIN Site End -->
+
+
+
+
+<!-- Exclude For KinePolies Site -->
+
+<property>
+  <name>parser.html.NodesToExclude</name>
+ <value></value>
+  <description>
+  A list of nodes whose content will not be indexed separated by "|".  Use this to tell
+  the HTML parser to ignore, for example, site navigation text.
+  Each node has three elements: the first one is the tag name, the second one the
+  attribute name, the third one the value of the attribute.
+  Note that nodes with these attributes, and their children, will be silently ignored by the parser
+  so verify the indexed content with Luke to confirm results.
+  </description>
+</property>
+
+<!--Exclude For KinePolies Site End -->
+
+
+
+<property>
+  <name>parser.character.encoding.default</name>
+  <value>ISO-8859-1</value>
+  <description>The character encoding to fall back to when no other information
+  is available</description>
+</property>
+
+<property>
+  <name>encodingdetector.charset.min.confidence</name>
+  <value>-1</value>
+  <description>A integer between 0-100 indicating minimum confidence value
+  for charset auto-detection. Any negative value disables auto-detection.
+  </description>
+</property>
+
+<property>
+  <name>parser.caching.forbidden.policy</name>
+  <value>content</value>
+  <description>If a site (or a page) requests through its robot metatags
+  that it should not be shown as cached content, apply this policy. Currently
+  three keywords are recognized: "none" ignores any "noarchive" directives.
+  "content" doesn't show the content, but shows summaries (snippets).
+  "all" doesn't show either content or summaries.</description>
+</property>
+
+
+
+
+
+<property>
+  <name>parser.html.outlinks.ignore_tags</name>
+  <value>link</value>
+  <description>Comma separated list of HTML tags, from which outlinks 
+  shouldn't be extracted. Nutch takes links from: a, area, form, frame, 
+  iframe, script, link, img. If you add any of those tags here, it
+  won't be taken. Default is empty list. Probably reasonable value
+  for most people would be "img,script,link".</description>
+</property>
+
+
+
+<property>
+  <name>parser.html.outlinks.ignore_alternate</name>
+  <value>false</value>
+  <description>Boolean value instructing the parser to ignore alternate
+  directives on pages and includes them in outlinks. Defaults to false, 
+  which honors the nofollow and does not include them in outlinks</description>
+</property>
+
+
+
+
+<property>
+  <name>parser.timeout</name>
+  <value>40</value>
+  <description>Timeout in seconds for the parsing of a document, otherwise treats it as an exception and 
+  moves on the the following documents. This parameter is applied to any Parser implementation. 
+  Set to -1 to deactivate, bearing in mind that this could cause
+  the parsing to crash because of a very long or corrupted document.
+  </description>
+</property>
+
+
+
+    <property>
+        <name>plugin.includes</name>
+        <value>protocol-file|protocol-http|protocol-httpclient|urlfilter-regex|subcollection|element-selector|index-(basic|more)|query-(basic|site|url|lang)|indexer-solr|nutch-extensionpoints|protocol-file|urlfilter-regex|parse-(text|html|msexcel|msword|mspowerpoint|pdf)|summary-basic|scoring-opic|urlnormalizer-(pass|regex|basic)|protocol-http|urlfilter-regex|parse-(json|xml|ajax|html|tika|metatags)|index-(basic|anchor|more|metadata)|response-(ajax|json|xml)</value>
+    </property>
+<property>
+  <name>http.proxy.host</name>
+  <value></value>
+  <description>The proxy hostname.  If empty, no proxy is used.</description>
+</property>
+<property>
+  <name>http.agent.url</name>
+  <value></value>
+  <description>A URL to advertise in the User-Agent header.  This will 
+   appear in parenthesis after the agent name. Custom dictates that this
+   should be a URL of a page explaining the purpose and behavior of this
+   crawler.
+  </description>
+</property>
+
+
+
+
+<!-- file properties -->
+
+<property>
+  <name>file.content.limit</name>
+  <value>-1</value>
+  <description>The length limit for downloaded content using the file
+   protocol, in bytes. If this value is nonnegative (>=0), content longer
+   than it will be truncated; otherwise, no truncation at all. Do not
+   confuse this setting with the http.content.limit setting.
+  </description>
+</property>
+
+<property>
+  <name>file.crawl.redirect_noncanonical</name>
+  <value>false</value>
+  <description>
+    If true, protocol-file treats non-canonical file names as
+    redirects and does not canonicalize file names internally. A file
+    name containing symbolic links as path elements is then not
+    resolved and &quot;fetched&quot; but recorded as redirect with the
+    canonical name (all links on path are resolved) as redirect
+    target.
+  </description>
+</property>
+
+<property>
+  <name>file.content.ignored</name>
+  <value>false</value>
+  <description>If true, no file content will be saved during fetch.
+  And it is probably what we want to set most of time, since file:// URLs
+  are meant to be local and we can always use them directly at parsing
+  and indexing stages. Otherwise file contents will be saved.
+  !! NO IMPLEMENTED YET !!
+  </description>
+</property>
+
+<property>
+  <name>file.crawl.parent</name>
+  <value>false</value>
+  <description>The crawler is not restricted to the directories that you specified in the
+    urls file but it is jumping into the parent directories as well. For your own crawling you can
+    change this behavior (set to false) the way that only directories beneath the directories that you specify get
+    crawled.
+  </description>
+</property>
+
+
+
+<property>
+  <name>http.timeout</name>
+  <value>60000</value>
+  <description>The default network timeout, in milliseconds.</description>
+</property>
+
+<property>
+  <name>http.max.delays</name>
+  <value>-1</value>
+  <description>The number of times a thread will delay when trying to
+  fetch a page.  Each time it finds that a host is busy, it will wait
+  fetcher.server.delay.  After http.max.delays attepts, it will give
+  up on the page for now.</description>
+</property>
+
+
+
+<property>
+  <name>urlnormalizer.regex.file</name>
+  <value>regex-normalize.xml</value>
+  <description>Name of the config file used by the RegexUrlNormalizer class.
+  </description>
+</property>
+
+<property>
+  <name>urlnormalizer.loop.count</name>
+  <value>1</value>
+  <description>Optionally loop through normalizers several times, to make
+  sure that all transformations have been performed.
+  </description>
+</property>
+
+
+</configuration>
