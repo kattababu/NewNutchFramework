@@ -7,4 +7,42 @@ NUTCH_HOME="/NutchCrawl/Nutch"
 JAVA_OPTS="-Djavax.net.ssl.trustStore=C:\.keystore -Djavax.net.ssl.trustStorePassword=changeit"
 
 CLASSPATH=".:/usr/lib/jvm/java-8-oracle/lib:/usr/lib/jvm/java-8-oracle/lib/tools.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/NutchCrawl/Nutch/runtime/local/lib/solr-solrj-4.6.0.jar:/NutchCrawl/Nutch/runtime/local/lib/hadoop-core-1.2.0.jar:/NutchCrawl/Nutch/runtime/local/lib/apache-nutch-2.3.jar:/NutchCrawl/Nutch/runtime/local/lib/*:/NutchCrawl/HBase/lib/*:/NutchCrawl/HBase/lib/hbase-0.94.14.jar:/etc/Jars/*"
+ HBASE
+ 
+root@nutch:/NutchCrawl/HBase/bin# stop-hbase.sh
+stopping hbase...................
+root@nutch:/NutchCrawl/HBase/bin# start-hbase.sh
+starting master, logging to /NutchCrawl/HBase/bin/../logs/hbase-root-master-nutch.out
+root@nutch:/NutchCrawl/HBase/bin# hbase shell
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.94.14, r1543222, Mon Nov 18 23:23:33 UTC 2013
+
+hbase(main):001:0> list
+TABLE
+0 row(s) in 0.5340 seconds
+
+SOLR
+
+
+root@nutch:/NutchCrawl/Solr/bin# solr stop -all
+root@nutch:/NutchCrawl/Solr/bin# solr start
+Waiting to see Solr listening on port 8983 [\]
+Started Solr server on port 8983 (pid=9968). Happy searching!
+                                                                                                                                         root@nutch:/NutchCrawl/Solr/bin# solr create_core -c greyhead
+
+Setup new core instance directory:
+/NutchCrawl/Solr/server/solr/greyhead
+
+Creating new core 'greyhead' using command:
+http://localhost:8983/solr/admin/cores?action=CREATE&name=greyhead&instanceDir=greyhead
+
+{ 
+  "responseHeader":{
+    "status":0,
+    "QTime":2518},
+  "core":"greyhead"}
+
+COMMAND :
+ .../runtime/local > ./bin/crawl urls folder(grey_trips)  HBase dbname (grey_head) http://localhost:8983/solr/greyhead 1
 
