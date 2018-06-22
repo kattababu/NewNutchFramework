@@ -1,0 +1,10 @@
+PATH="/usr/lib/jvm/java-8-oracle/bin:/usr/bin/ant:/NutchCrawl/Solr/bin:/NutchCrawl/HBase/bin:/NutchCrawl/Nutch/runtime/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+NUTCH_HOME="/NutchCrawl/Nutch"
+
+JAVA_OPTS="-Djavax.net.ssl.trustStore=C:\.keystore -Djavax.net.ssl.trustStorePassword=changeit"
+
+CLASSPATH=".:/usr/lib/jvm/java-8-oracle/lib:/usr/lib/jvm/java-8-oracle/lib/tools.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/NutchCrawl/Nutch/runtime/local/lib/solr-solrj-4.6.0.jar:/NutchCrawl/Nutch/runtime/local/lib/hadoop-core-1.2.0.jar:/NutchCrawl/Nutch/runtime/local/lib/apache-nutch-2.3.jar:/NutchCrawl/Nutch/runtime/local/lib/*:/NutchCrawl/HBase/lib/*:/NutchCrawl/HBase/lib/hbase-0.94.14.jar:/etc/Jars/*"
+
